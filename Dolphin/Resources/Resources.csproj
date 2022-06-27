@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Image\DeepLearning.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\DeepLearning.png" />
+  </ItemGroup>
+
+</Project>
