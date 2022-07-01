@@ -1,9 +1,10 @@
+using Common;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 
 namespace Model
 {
-    public class Project : ObservableObject
+    public class Project : ObservableObject, IProject
     {
 
         #region Private Property

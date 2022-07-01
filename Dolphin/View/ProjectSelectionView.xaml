@@ -1,11 +1,11 @@
-<UserControl x:Class="View.ProjectSelectionView"
+﻿<UserControl x:Class="View.ProjectSelectionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="450" d:DesignWidth="1024"
              x:Name="view">
     
     
@@ -26,7 +26,7 @@
                     Command="{Binding ElementName=view, Path=ClassificationSelectionCommand}">
                 <Image Source="/Resources;Component/Image/DeepLearning.png"></Image>
             </Button>
-            <TextBlock Text="Classification"
+            <TextBlock Text="분류기 프로젝트 생성"
                        Grid.Row="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
@@ -44,7 +44,7 @@
                     Command="{Binding ElementName=view, Path=SegmentationSelectionCommand}">
                 <Image Source="/Resources;Component/Image/DeepLearning.png"></Image>
             </Button>
-            <TextBlock Text="Segmentation"
+            <TextBlock Text="픽셀 분할 프로젝트 생성"
                        Grid.Row="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
@@ -62,10 +62,30 @@
                     Command="{Binding ElementName=view, Path=ObjectDetectionSelectionCommand}">
                 <Image Source="/Resources;Component/Image/DeepLearning.png"></Image>
             </Button>
-            <TextBlock Text="Object Detection"
+            <TextBlock Text="객체 검출 프로젝트 생성"
                        Grid.Row="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
+        </Grid>
+
+        <Grid Width="200"
+              Height="300"
+              Margin="5"
+              Background="#2d2d30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Command="{Binding ElementName=view, Path=ObjectDetectionSelectionCommand}">
+                <Image Source="/Resources;Component/Image/OpenProject.png"></Image>
+            </Button>
+            <TextBlock Text="프로젝트 열기"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Background="#2d2d30"></TextBlock>
         </Grid>
     </StackPanel>
 </UserControl>

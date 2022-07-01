@@ -67,5 +67,20 @@ namespace View
                 SetValue(ObjectDetectionSelectionCommandProperty, value);
             }
         }
+
+
+        public static readonly DependencyProperty OpenProjectCommandProperty = DependencyProperty.Register("OpenProjectCommand", typeof(ICommand), typeof(ProjectSelectionView));
+        public ICommand OpenProjectCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(OpenProjectCommandProperty);
+            }
+
+            set
+            {
+                SetValue(OpenProjectCommandProperty, value);
+            }
+        }
     }
 }

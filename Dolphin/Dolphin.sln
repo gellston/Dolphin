@@ -19,7 +19,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DolphinAPINET", "DolphinAPI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{D7DBB82B-3F72-47E5-B0C7-06DD7AE822EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{986BDC43-6693-4BA1-BABA-18FC505D5917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{986BDC43-6693-4BA1-BABA-18FC505D5917}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DolphinDataLoader", "DolphinDataLoader\DolphinDataLoader.vcxproj", "{89784024-D438-4E5E-B621-D681C73F20A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748} = {4284B809-DB2E-4E43-B57A-B8358E4EA748}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DolphinCommon", "DolphinCommon\DolphinCommon.vcxproj", "{4284B809-DB2E-4E43-B57A-B8358E4EA748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +146,30 @@ Global
 		{986BDC43-6693-4BA1-BABA-18FC505D5917}.Release|x64.Build.0 = Release|x64
 		{986BDC43-6693-4BA1-BABA-18FC505D5917}.Release|x86.ActiveCfg = Release|Any CPU
 		{986BDC43-6693-4BA1-BABA-18FC505D5917}.Release|x86.Build.0 = Release|Any CPU
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|Any CPU.Build.0 = Debug|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|x64.ActiveCfg = Debug|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|x64.Build.0 = Debug|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|x86.ActiveCfg = Debug|Win32
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Debug|x86.Build.0 = Debug|Win32
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|Any CPU.ActiveCfg = Release|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|Any CPU.Build.0 = Release|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|x64.ActiveCfg = Release|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|x64.Build.0 = Release|x64
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|x86.ActiveCfg = Release|Win32
+		{89784024-D438-4E5E-B621-D681C73F20A1}.Release|x86.Build.0 = Release|Win32
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|Any CPU.Build.0 = Debug|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|x64.ActiveCfg = Debug|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|x64.Build.0 = Debug|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|x86.ActiveCfg = Debug|Win32
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Debug|x86.Build.0 = Debug|Win32
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|Any CPU.ActiveCfg = Release|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|Any CPU.Build.0 = Release|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x64.ActiveCfg = Release|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x64.Build.0 = Release|x64
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x86.ActiveCfg = Release|Win32
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

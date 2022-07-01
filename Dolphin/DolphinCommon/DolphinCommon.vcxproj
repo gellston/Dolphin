@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f7c69e92-054a-44d5-a41e-86b1e16fc239}</ProjectGuid>
-    <RootNamespace>DolphinAPI</RootNamespace>
+    <ProjectGuid>{4284b809-db2e-4e43-b57a-b8358e4ea748}</ProjectGuid>
+    <RootNamespace>DolphinCommon</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -102,17 +102,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;DOLPHIN_COMMON_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Github\Library\torch\debug\libtorch\include;C:\Github\Library\torch\debug\libtorch\include\torch\csrc\api\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Github\Library\torch\debug\libtorch\lib;$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>caffe2_nvrtc.lib;c10.lib;c10_cuda.lib;torch_cuda.lib;torch_cpu.lib;torch_cuda_cu.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/INCLUDE:?_torch_cuda_cu_linker_symbol_op_cuda@native@at@@YA?AVTensor@2@AEBV32@@Z %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,23 +117,35 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;DOLPHIN_COMMON_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Github\Library\torch\release\libtorch\include;C:\Github\Library\torch\release\libtorch\include\torch\csrc\api\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Github\Library\torch\release\libtorch\lib;$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>caffe2_nvrtc.lib;c10.lib;c10_cuda.lib;torch_cuda.lib;torch_cpu.lib;torch_cuda_cu.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/INCLUDE:?_torch_cuda_cu_linker_symbol_op_cuda@native@at@@YA?AVTensor@2@AEBV32@@Z %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DolphinAPI.cpp" />
+    <ClCompile Include="argument.cpp" />
+    <ClCompile Include="cLbl.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="DolphinCommon.cpp" />
+    <ClCompile Include="frame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="argument.h" />
+    <ClInclude Include="cLbl.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="icLbl.h" />
+    <ClInclude Include="macro.h" />
+    <ClInclude Include="exception.h" />
+    <ClInclude Include="frame.h" />
+    <ClInclude Include="iframe.h" />
+    <ClInclude Include="common_export.h" />
+    <ClInclude Include="pixel_type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
