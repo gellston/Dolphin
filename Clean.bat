@@ -33,6 +33,7 @@ rmdir %CURPATH%\Dolphin\DolphinAPI\x64 /S /Q
 rmdir %CURPATH%\Dolphin\DolphinAPINET\x64 /S /Q
 rmdir %CURPATH%\Dolphin\DolphinCommon\x64 /S /Q
 rmdir %CURPATH%\Dolphin\DolphinDataLoader\x64 /S /Q
+rmdir %CURPATH%\Dolphin\ColsoneCpp\x64 /S /Q
 
 
 

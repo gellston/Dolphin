@@ -1,11 +1,10 @@
-
-
-
 #include "argument.h"
-
-
+#include "macro.h"
 
 #include <map>
+#include <fmt/core.h>
+#include <iostream>
+
 
 
 namespace hv {
@@ -13,18 +12,32 @@ namespace hv {
 
 		class impl_argument {
 		public:
-
 			std::map<std::string, arg> table;
-
 			impl_argument() {
 
 			}
 			~impl_argument() {
 
 			}
-
-
 		};
+
+		struct variant_string_converter {
+			variant_string_converter(){}
+
+			std::string operator()(std::string value) { 
+				return value; 
+			}
+			std::string operator()(bool value) {
+				return value == true ? "true" : "false";
+			}
+			std::string operator()(int value) {
+				return std::to_string(value);
+			}
+			std::string operator()(double value) {
+				return std::to_string(value);
+			}
+		};
+
 	}
 }
 
@@ -47,35 +60,160 @@ hv::dolphin::argument::~argument() {
 
 }
 
-template<> double hv::dolphin::argument::operator[](std::string key) {
+//standard key operator overloading
 
 
-	return 0;
+template<> DOLPHIN_COMMON_API double hv::dolphin::argument::get(std::string key) {
+	try {
+
+		if (this->_instance->table.find(key) == this->_instance->table.end()) {
+			std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Key is not exists");
+			throw hv::dolphin::exception(message);
+		}
+
+		return std::get<double>(this->_instance->table[key]);
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
+}
+template<> DOLPHIN_COMMON_API int hv::dolphin::argument::get(std::string key) {
+	try {
+
+		if (this->_instance->table.find(key) == this->_instance->table.end()) {
+			std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Key is not exists");
+			throw hv::dolphin::exception(message);
+		}
+
+		return std::get<int>(this->_instance->table[key]);
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
+}
+template<> DOLPHIN_COMMON_API std::string hv::dolphin::argument::get(std::string key) {
+	try {
+
+		if (this->_instance->table.find(key) == this->_instance->table.end()) {
+			std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Key is not exists");
+			throw hv::dolphin::exception(message);
+		}
+
+		return std::get<std::string>(this->_instance->table[key]);
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
+}
+template<> DOLPHIN_COMMON_API bool hv::dolphin::argument::get(std::string key) {
+	try {
+
+		if (this->_instance->table.find(key) == this->_instance->table.end()) {
+			std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Key is not exists");
+			throw hv::dolphin::exception(message);
+		}
+
+		return std::get<bool>(this->_instance->table[key]);
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
 }
 
-template<> int hv::dolphin::argument::operator[](std::string key) {
 
+///////////////////////////////////////////////////////////////////////
+template<> void hv::dolphin::argument::add(std::string key, double value) {
+	try {
 
-	return 0;
+		this->_instance->table[key] = value;
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
 }
 
-template<> std::string hv::dolphin::argument::operator[](std::string key) {
+template<> void hv::dolphin::argument::add(std::string key, int value) {
+	try {
 
-
-	return "";
+		this->_instance->table[key] = value;
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
 }
 
-template<> bool hv::dolphin::argument::operator[](std::string key) {
+template<> void hv::dolphin::argument::add(std::string key, std::string value) {
+	try {
 
-
-	return false;
+		this->_instance->table[key] = value;
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
 }
+
+template<> void hv::dolphin::argument::add(std::string key, bool value) {
+	try {
+
+		this->_instance->table[key] = value;
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
+}
+
+template<> void hv::dolphin::argument::add(std::string key, const char * value) {
+	try {
+
+		this->_instance->table[key] = std::string(value);
+	}
+	catch (std::exception e) {
+		std::string message = hv::dolphin::generate_error_message(__FUNCTION__, __LINE__, "Invalid key or access");
+		throw hv::dolphin::exception(message);
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////
+
 
 std::string hv::dolphin::argument::parse() {
 
-	return "";
+	std::string content = "";
+
+	content += "{\n";
+	for (auto& pair : this->_instance->table) {
+		std::string key = pair.first;
+		std::string value = std::visit(hv::dolphin::variant_string_converter{}, pair.second);
+		std::string temp = fmt::format("\t[{0},{1}]", key, value);
+		temp += "\n";
+		content += temp;
+	}
+	content += "}\n";
+
+	return content;
 }
 
 void hv::dolphin::argument::print() {
+	std::string content = "";
 
+	content += "{\n";
+	for (auto& pair : this->_instance->table) {
+		std::string key = pair.first;
+		std::string value = std::visit(hv::dolphin::variant_string_converter{}, pair.second);
+		std::string temp = fmt::format("\t[{0},{1}]", key, value);
+		temp += "\n";
+		content += temp;
+	}
+	content += "}\n";
+
+	std::cout << content << std::endl;
 }

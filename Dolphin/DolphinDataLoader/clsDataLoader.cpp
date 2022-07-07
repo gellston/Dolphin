@@ -1,6 +1,11 @@
 ﻿#include "clsDataLoader.h"
 
 
+#include <nlohmann/json.hpp>
+#include <opencv2/opencv.hpp>
+#include <algorithm>
+
+
 
 namespace hv {
 	namespace dolphin {
@@ -8,6 +13,10 @@ namespace hv {
 		public:
 			std::string path;
 			smrArgument argument;
+
+
+
+
 			impl_clsDataLoader() {
 
 			}

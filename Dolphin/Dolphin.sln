@@ -28,6 +28,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DolphinDataLoader", "Dolphi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DolphinCommon", "DolphinCommon\DolphinCommon.vcxproj", "{4284B809-DB2E-4E43-B57A-B8358E4EA748}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColsoneCpp", "ColsoneCpp\ColsoneCpp.vcxproj", "{083CE60C-849D-488B-8B0D-469E0666D916}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4284B809-DB2E-4E43-B57A-B8358E4EA748} = {4284B809-DB2E-4E43-B57A-B8358E4EA748}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +175,18 @@ Global
 		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x64.Build.0 = Release|x64
 		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x86.ActiveCfg = Release|Win32
 		{4284B809-DB2E-4E43-B57A-B8358E4EA748}.Release|x86.Build.0 = Release|Win32
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|Any CPU.Build.0 = Debug|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|x64.ActiveCfg = Debug|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|x64.Build.0 = Debug|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|x86.ActiveCfg = Debug|Win32
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Debug|x86.Build.0 = Debug|Win32
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|Any CPU.ActiveCfg = Release|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|Any CPU.Build.0 = Release|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|x64.ActiveCfg = Release|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|x64.Build.0 = Release|x64
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|x86.ActiveCfg = Release|Win32
+		{083CE60C-849D-488B-8B0D-469E0666D916}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
