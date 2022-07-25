@@ -1,27 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="DevExpress.Images" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Wpf" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Wpf.Core" Version="21.2.*-*" />
-    <PackageReference Include="DevExpress.Wpf.Docking" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Wpf.Ribbon" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="21.2.*-*" />
+    <PackageReference Include="DevExpress.Wpf" Version="21.2.8" />
+    <PackageReference Include="DevExpress.Wpf.Themes.VS2019Dark" Version="21.2.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
+    <ProjectReference Include="..\Service\Service.csproj" />
     <ProjectReference Include="..\View\View.csproj" />
   </ItemGroup>
-
 </Project>

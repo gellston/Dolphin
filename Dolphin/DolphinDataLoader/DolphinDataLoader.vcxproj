@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="clsDataLoader.cpp" />
+    <ClCompile Include="DolphinDataLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsDataLoader.h" />

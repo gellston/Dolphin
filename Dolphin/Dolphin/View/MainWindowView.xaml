@@ -25,6 +25,11 @@
             <dxr:RibbonDefaultPageCategory>
                 <dxr:RibbonPage Caption="프로젝트">
                     <dxr:RibbonPageGroup Caption="프로젝트">
+                        <dxb:BarButtonItem Content="새 프로젝트" 
+                                           LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
+                                           Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}">
+
+                        </dxb:BarButtonItem>
                         <dxb:BarButtonItem Content="프로젝트 열기" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Actions/Open.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Actions/Open.svg'}">
@@ -40,7 +45,7 @@
                                            Glyph="{dx:DXImage 'SvgImages/Save/SaveAll.svg'}">
 
                         </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="클레시피케이션" 
+                        <!--<dxb:BarButtonItem Content="클레시피케이션" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}">
 
@@ -54,7 +59,7 @@
                                            LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}">
 
-                        </dxb:BarButtonItem>
+                        </dxb:BarButtonItem>-->
 
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>

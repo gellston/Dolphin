@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace Service
 {
-    public class ProjectManageService
+    public class ProjectManageService : IProjectManageService
     {
 
         #region Private Property

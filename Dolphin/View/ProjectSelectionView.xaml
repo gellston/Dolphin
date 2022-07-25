@@ -6,12 +6,51 @@
              xmlns:local="clr-namespace:View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1024"
-             x:Name="view">
+             x:Name="view"
+             Background="#242424">
+
+
+    <DockPanel>
+ 
+        <DockPanel DockPanel.Dock="Right"
+                   Width="412">
+            <TextBlock Text="프로잭트 선택"
+                       DockPanel.Dock="Top"
+                       Margin="20,40,0,20"
+                       Foreground="#fafafa"
+                       FontSize="20">
+                
+            </TextBlock>
+            <ListView Background="#383838"
+                      Height="200"
+                      DockPanel.Dock="Top"
+                      Margin="20,0,20,20">
+                
+            </ListView>
+            <Border></Border>
+            
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="최근 프로젝트"
+                       DockPanel.Dock="Top"
+                       Margin="20,40,0,20"
+                       Foreground="#fafafa"
+                       FontSize="20">
+
+            </TextBlock>
+            <ListView Background="#383838"
+                      Margin="20,0,20,20"
+                      DockPanel.Dock="Top">
+
+            </ListView>
+
+
+        </DockPanel>
+    </DockPanel>
+
+
     
-    
-    
-    
-    <StackPanel VerticalAlignment="Center"
+    <!--<StackPanel VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal">
         <Grid Width="200"
@@ -68,24 +107,6 @@
                        VerticalAlignment="Center"></TextBlock>
         </Grid>
 
-        <Grid Width="200"
-              Height="300"
-              Margin="5"
-              Background="#2d2d30">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="40"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Button Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Command="{Binding ElementName=view, Path=ObjectDetectionSelectionCommand}">
-                <Image Source="/Resources;Component/Image/OpenProject.png"></Image>
-            </Button>
-            <TextBlock Text="프로젝트 열기"
-                       Grid.Row="1"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Background="#2d2d30"></TextBlock>
-        </Grid>
-    </StackPanel>
+    
+    </StackPanel>-->
 </UserControl>

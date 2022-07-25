@@ -30,6 +30,7 @@ namespace hv {
 			DOLPHIN_LOADER_API clsDataLoader(std::string path, smrArgument arugment);
 			DOLPHIN_LOADER_API ~clsDataLoader();
 
+			DOLPHIN_LOADER_API void load();
 			DOLPHIN_LOADER_API std::size_t size();
 			DOLPHIN_LOADER_API batch operator[](std::size_t index);
 			DOLPHIN_LOADER_API void shuffle();

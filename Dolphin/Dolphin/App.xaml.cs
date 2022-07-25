@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Common;
+using Microsoft.Extensions.DependencyInjection;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -33,7 +35,7 @@ namespace Dolphin
         {
             var services = new ServiceCollection();
 
-
+            services.AddSingleton<IProjectManageService, ProjectManageService>();
 
             return services.BuildServiceProvider();
         }
