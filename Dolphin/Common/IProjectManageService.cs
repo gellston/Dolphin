@@ -9,8 +9,12 @@ namespace Common
 {
     public interface IProjectManageService
     {
-
-
         public ObservableCollection<IProject> ProjectCollection{get;}
+
+        public ObservableCollection<IProjectType> ProjectTypeCollection { get; }
+
+
+
+        public void CreateProject(string name, IProjectType type);
     }
 }

@@ -10,15 +10,9 @@ namespace Model
 {
     public class ClassificationProject : Project
     {
-
         public ClassificationProject()
         {
-
+            this.ProjectType = "Classification";
         }
-
-
-        //public ObservableCollection<I>
-
-
     }
 }

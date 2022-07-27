@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class SegmentationProject : Project
+    public class Configuration
     {
-        public SegmentationProject()
-        {
-            this.ProjectType = "Segmentation";
-        }
     }
 }

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IDialogService
+    public interface IConfiguration
     {
-
-        public void OpenDialog(object viewModel);
     }
 }

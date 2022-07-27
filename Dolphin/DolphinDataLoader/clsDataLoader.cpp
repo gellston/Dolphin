@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <opencv2/opencv.hpp>
 #include <algorithm>
-
+#include <filesystem>
 
 
 namespace hv {
@@ -13,12 +13,14 @@ namespace hv {
 		public:
 			std::string path;
 			smrArgument argument;
+			int batchSize;
+
 
 
 
 
 			impl_clsDataLoader() {
-
+				this->batchSize = 0;
 			}
 
 			~impl_clsDataLoader() {
@@ -34,6 +36,30 @@ hv::dolphin::clsDataLoader::clsDataLoader(std::string path, smrArgument argument
 
 	this->_instance->path = path;
 	this->_instance->argument = argument;
+
+	try {
+		
+
+		this->_instance->batchSize = argument->get<int>("batchSize");
+
+
+
+		if (this->_instance->batchSize < 0) {
+			throw std::exception("Invalid batch size");
+		}
+			
+
+
+		if (std::filesystem::exists(path) == false) {
+			throw std::exception("Invalid file path");
+		}
+
+
+	}
+	catch (std::exception e) {
+		std::string message = dolphin::generate_error_message(__FUNCTION__, __LINE__, e.what());
+		throw dolphin::exception(message);
+	}
 
 }
 

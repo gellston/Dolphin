@@ -4,11 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1024"
              x:Name="view"
              Background="#242424">
 
+    <UserControl.Resources>
+        <Style x:Key="ProjectButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#383838"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+        </Style>
+        <Style x:Key="ProjectButtonImageStyle" TargetType="{x:Type Image}">
+            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            
+        </Style>
+        <Style x:Key="ProjectButtonTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#fafafa"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+          
+        </Style>
+        <Style x:Key="ProjectTitleTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#fafafa"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+       
+    </UserControl.Resources>
 
     <DockPanel>
  
@@ -17,30 +42,141 @@
             <TextBlock Text="프로잭트 선택"
                        DockPanel.Dock="Top"
                        Margin="20,40,0,20"
-                       Foreground="#fafafa"
-                       FontSize="20">
+                       Style="{StaticResource ProjectTitleTextStyle}">
                 
             </TextBlock>
             <ListView Background="#383838"
-                      Height="200"
+                      Height="150"
                       DockPanel.Dock="Top"
-                      Margin="20,0,20,20">
-                
+                      Margin="20,0,20,20"
+                      HorizontalContentAlignment="Stretch"
+                      VerticalContentAlignment="Stretch"
+                      BorderThickness="0"
+                      SelectionMode="Single"
+                      SelectedItem="{Binding SelectedProjectType, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                      >
+
+                <ListViewItem>
+                    <DockPanel>
+                        <Image Width="30"
+                               Height="30"
+                               Source="pack://application:,,,/Resources;component/Image/DeepLearning.png"
+                               DockPanel.Dock="Left"></Image>
+                        <TextBlock Text="Classification"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#fafafa"
+                                   FontSize="14"></TextBlock>
+                    </DockPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <DockPanel>
+                        <Image Width="30"
+                               Height="30"
+                               Source="pack://application:,,,/Resources;component/Image/DeepLearning.png"
+                               DockPanel.Dock="Left"></Image>
+                        <TextBlock Text="Segmentation"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#fafafa"
+                                   FontSize="14"></TextBlock>
+                    </DockPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <DockPanel>
+                        <Image Width="30"
+                               Height="30"
+                               Source="pack://application:,,,/Resources;component/Image/DeepLearning.png"
+                               DockPanel.Dock="Left"></Image>
+                        <TextBlock Text="Object Detection"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#fafafa"
+                                   FontSize="14"></TextBlock>
+                    </DockPanel>
+                </ListViewItem>
             </ListView>
-            <Border></Border>
+
+            <Grid Margin="20,0,20,20"
+                  DockPanel.Dock="Top"
+                  Height="40"
+                  Background="#383838">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Text="프로젝트 이름"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           Foreground="#fafafa"></TextBlock>
+                <TextBox Grid.Column="1"
+                         Text="{Binding ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         TextAlignment="Center"
+                         VerticalContentAlignment="Center"></TextBox>
+            </Grid>
+            
+            <UniformGrid Margin="20,0,20,20"
+                         Columns="2"
+                         Rows="2">
+                <Button Margin="0,0,5,5"
+                        Style="{StaticResource ProjectButtonStyle}"
+                        Command="{Binding CreateProjectCommand}">
+                    <DockPanel>
+                        <Image Style="{StaticResource ProjectButtonImageStyle}"
+                               Source="{dx:DXImage 'SvgImages/Outlook Inspired/NewProduct.svg'}"></Image>
+                        <TextBlock Text="프로젝트 생성"
+                                   Style="{StaticResource ProjectButtonTextStyle}"></TextBlock>
+                    </DockPanel>
+                </Button>
+                <Button Margin="5,0,0,5"
+                        Style="{StaticResource ProjectButtonStyle}"
+                        Command="{Binding OpenProjectCommand}">
+                    <DockPanel>
+                        <Image Style="{StaticResource ProjectButtonImageStyle}"
+                               Source="{dx:DXImage 'SvgImages/Icon Builder/Actions_FolderOpen.svg'}"></Image>
+                        <TextBlock Text="프로젝트 열기"
+                                   Style="{StaticResource ProjectButtonTextStyle}"></TextBlock>
+                    </DockPanel>
+                </Button>
+                <!--<Button Margin="0,5,5,0"
+                        Style="{StaticResource ProjectButtonStyle}"
+                        Command="{Binding ConfirmCommand}">
+                    <DockPanel>
+                        <Image Style="{StaticResource ProjectButtonImageStyle}"
+                               Source="{dx:DXImage 'SvgImages/Outlook Inspired/MarkComplete.svg'}"></Image>
+                        <TextBlock Text="확인"
+                                   Style="{StaticResource ProjectButtonTextStyle}"></TextBlock>
+                    </DockPanel>
+                </Button>-->
+                <Button Margin="0,5,5,0"
+                        Style="{StaticResource ProjectButtonStyle}"
+                        Command="{Binding CloseCommand}">
+                    <DockPanel>
+                        <Image Style="{StaticResource ProjectButtonImageStyle}"
+                               Source="{dx:DXImage 'SvgImages/RichEdit/CloseHeaderAndFooter.svg'}"></Image>
+                        <TextBlock Text="닫기"
+                                   Style="{StaticResource ProjectButtonTextStyle}"></TextBlock>
+                    </DockPanel>
+                </Button>
+         
+            </UniformGrid>
             
         </DockPanel>
         <DockPanel>
             <TextBlock Text="최근 프로젝트"
                        DockPanel.Dock="Top"
                        Margin="20,40,0,20"
-                       Foreground="#fafafa"
-                       FontSize="20">
+                       Style="{StaticResource ProjectTitleTextStyle}">
 
             </TextBlock>
             <ListView Background="#383838"
                       Margin="20,0,20,20"
-                      DockPanel.Dock="Top">
+                      DockPanel.Dock="Top"
+                      HorizontalContentAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      >
 
             </ListView>
 

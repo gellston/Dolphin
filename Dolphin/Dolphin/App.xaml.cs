@@ -1,12 +1,11 @@
 ﻿using Common;
+using Dolphin.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Service;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
+using ViewModel;
 
 namespace Dolphin
 {
@@ -19,14 +18,16 @@ namespace Dolphin
         public App()
         {
 
-            Services = ConfigureServices();
+            var services = ConfigureServices();
+            Ioc.Default.ConfigureServices(services);
+
 
             this.InitializeComponent();
         }
 
         /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
         /// </summary>
-        public IServiceProvider Services { get; }
+        ///public IServiceProvider Services { get; }
 
         /// <summary>
         /// Configures the services for the application.
@@ -36,6 +37,14 @@ namespace Dolphin
             var services = new ServiceCollection();
 
             services.AddSingleton<IProjectManageService, ProjectManageService>();
+            services.AddSingleton<IApplicationConfigService, ApplicationConfigService>();
+
+
+
+            //ViewModel
+            services.AddSingleton<MainWindowViewModel>();
+            services.AddScoped<IProjectSelectionViewModel, ProjectSelectionViewModel>();
+            
 
             return services.BuildServiceProvider();
         }

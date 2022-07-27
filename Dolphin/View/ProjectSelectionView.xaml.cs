@@ -26,61 +26,6 @@ namespace View
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty ClassificationSelectionCommandProperty = DependencyProperty.Register("ClassificationSelectionCommand", typeof(ICommand), typeof(ProjectSelectionView));
-        public ICommand ClassificationSelectionCommand
-        {
-            get
-            {
-                return (ICommand)GetValue(ClassificationSelectionCommandProperty);
-            }
 
-            set
-            {
-                SetValue(ClassificationSelectionCommandProperty, value);
-            }
-        }
-
-        public static readonly DependencyProperty SegmentationSelectionCommandProperty = DependencyProperty.Register("SegmentationSelectionCommand", typeof(ICommand), typeof(ProjectSelectionView));
-        public ICommand SegmentationSelectionCommand
-        {
-            get
-            {
-                return (ICommand)GetValue(SegmentationSelectionCommandProperty);
-            }
-
-            set
-            {
-                SetValue(SegmentationSelectionCommandProperty, value);
-            }
-        }
-
-        public static readonly DependencyProperty ObjectDetectionSelectionCommandProperty = DependencyProperty.Register("ObjectDetectionSelectionCommand", typeof(ICommand), typeof(ProjectSelectionView));
-        public ICommand ObjectDetectionSelectionCommand
-        {
-            get
-            {
-                return (ICommand)GetValue(ObjectDetectionSelectionCommandProperty);
-            }
-
-            set
-            {
-                SetValue(ObjectDetectionSelectionCommandProperty, value);
-            }
-        }
-
-
-        public static readonly DependencyProperty OpenProjectCommandProperty = DependencyProperty.Register("OpenProjectCommand", typeof(ICommand), typeof(ProjectSelectionView));
-        public ICommand OpenProjectCommand
-        {
-            get
-            {
-                return (ICommand)GetValue(OpenProjectCommandProperty);
-            }
-
-            set
-            {
-                SetValue(OpenProjectCommandProperty, value);
-            }
-        }
     }
 }

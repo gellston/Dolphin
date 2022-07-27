@@ -7,45 +7,54 @@
     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
     xmlns:view="clr-namespace:View;assembly=View"
+    xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+    xmlns:ui="clr-namespace:View;assembly=View"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    x:Name="view"
     Title="Dolphin 0.1" Height="800" Width="1000"
-    >
+    DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowViewModel}">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService x:Name="ServiceWithDefaultNotifications" 
+                                    ApplicationId="sample_notification_app" 
+                                    PredefinedNotificationTemplate="ShortHeaderAndTwoTextFields"/>
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <DockPanel>
+            <dxr:RibbonControl RibbonStyle="Office2019"
+                               DockPanel.Dock="Top"
+                               ShowApplicationButton="True"
+                               RibbonTitleBarVisibility="Collapsed"
+                               ToolbarShowMode="Hide"
+                               ApplicationButtonText="Dolphin"
+                               IsSimplified="True"
+                               AllowSimplifiedRibbon="True"
+                               AllowMinimizeRibbon="False"
+                               ToolbarShowCustomizationButton="False">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Caption="프로젝트">
+                        <dxr:RibbonPageGroup Caption="프로젝트">
+                            <dxb:BarButtonItem Content="새 프로젝트" 
+                                                LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
+                                                Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
+                                                Command="{Binding CreateNewProjectCommand}">
 
-
-    <DockPanel>
-        <dxr:RibbonControl RibbonStyle="Office2019"
-                           DockPanel.Dock="Top"
-                           ShowApplicationButton="True"
-                           RibbonTitleBarVisibility="Collapsed"
-                           ToolbarShowMode="Hide"
-                           ApplicationButtonText="Dolphin"
-                           IsSimplified="True"
-                           AllowSimplifiedRibbon="True"
-                           AllowMinimizeRibbon="False"
-                           ToolbarShowCustomizationButton="False">
-            <dxr:RibbonDefaultPageCategory>
-                <dxr:RibbonPage Caption="프로젝트">
-                    <dxr:RibbonPageGroup Caption="프로젝트">
-                        <dxb:BarButtonItem Content="새 프로젝트" 
-                                           LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
-                                           Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}">
-
-                        </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="프로젝트 열기" 
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Content="프로젝트 열기" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Actions/Open.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Actions/Open.svg'}">
 
-                        </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="프로젝트 저장" 
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Content="프로젝트 저장" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Save/Save.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Save/Save.svg'}">
 
-                        </dxb:BarButtonItem>
-                        <dxb:BarButtonItem Content="다른이름으로 프로젝트 저장" 
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Content="다른이름으로 프로젝트 저장" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Save/SaveAll.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Save/SaveAll.svg'}">
 
-                        </dxb:BarButtonItem>
-                        <!--<dxb:BarButtonItem Content="클레시피케이션" 
+                            </dxb:BarButtonItem>
+                            <!--<dxb:BarButtonItem Content="클레시피케이션" 
                                            LargeGlyph="{dx:DXImage 'SvgImages/Actions/New.svg'}"
                                            Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}">
 
@@ -61,26 +70,48 @@
 
                         </dxb:BarButtonItem>-->
 
-                    </dxr:RibbonPageGroup>
-                </dxr:RibbonPage>
-            </dxr:RibbonDefaultPageCategory>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
 
-        </dxr:RibbonControl>
+            </dxr:RibbonControl>
 
-        <view:SideMenu>
-            <view:SideMenu.MenuContent>
-                <ItemsControl>
-
-                    
-                </ItemsControl>
-            </view:SideMenu.MenuContent>
-            <view:SideMenu.MainContent>
-                <Grid Background="Red"></Grid>
-            </view:SideMenu.MainContent>
-        </view:SideMenu>
+            <view:SideMenu>
+                <view:SideMenu.MenuContent>
+                    <ItemsControl>
 
 
-    </DockPanel>
+                    </ItemsControl>
+                </view:SideMenu.MenuContent>
+                <view:SideMenu.MainContent>
+                    <Grid Background="Red"></Grid>
+                </view:SideMenu.MainContent>
+            </view:SideMenu>
+
+
+
+        </DockPanel>
+        <Popup IsOpen="{Binding IsOpenPopup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+               Width="{Binding PopupWidth, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+               Height="{Binding PopupHeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               Panel.ZIndex="2"
+               StaysOpen="False"
+               Placement="Center">
+            <ContentPresenter Content="{Binding PopupContent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <ContentPresenter.Resources>
+                    <DataTemplate DataType="{x:Type vm:ProjectSelectionViewModel}">
+                        <ui:ProjectSelectionView></ui:ProjectSelectionView>
+                    </DataTemplate>
+                </ContentPresenter.Resources>
+
+            </ContentPresenter>
+
+        </Popup>
+    </Grid>
+
+    
 
     
     <!--<Grid>
